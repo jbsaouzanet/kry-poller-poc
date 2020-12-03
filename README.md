@@ -52,5 +52,8 @@ You can also run gradle directly from the command line:
 # Building and run FrontEnd
 
 ```
+yarn install
+```
+```
 npm run start
 ```
