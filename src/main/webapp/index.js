@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { HashRouter as Router } from "react-router-dom";
 import App from './component/App';
 import reportWebVitals from './reportWebVitals';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
