@@ -37,7 +37,7 @@ Good luck!
 Put the code in a git repo on GitHub and send us the link (niklas.holmqvist@kry.se) when you are done.
 
 
-# Building
+# Building BackEnd
 We recommend using IntelliJ as it's what we use day today at the KRY office.
 In intelliJ, choose
 ```
@@ -47,4 +47,10 @@ New -> New from existing sources -> Import project from external model -> Gradle
 You can also run gradle directly from the command line:
 ```
 ./gradlew clean run
+```
+
+# Building and run FrontEnd
+
+```
+npm run start
 ```
