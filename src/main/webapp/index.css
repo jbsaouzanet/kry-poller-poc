@@ -47,6 +47,7 @@ body {
     }
     .row {
         display: inline-flex;
+        align-items: center;
     }
     .col {
         padding-left: 10px;
@@ -93,6 +94,8 @@ body {
     }
     .row {
         display: inline-flex;
+        align-items: center;
+        width: 100%;
     }
     .col {
         padding-left: 10px;

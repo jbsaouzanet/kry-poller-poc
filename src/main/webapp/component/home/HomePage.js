@@ -1,4 +1,5 @@
 import React from "react";
+import Status from "../common/Status"
 
 const HomePage = () => {
     const homeData = [
@@ -38,7 +39,8 @@ const HomePage = () => {
             {homeData.map((url, index) => (
                 <div className="row" key={index}>
                     <div className="col">
-                        <h4>{url.status.status}</h4>
+                        {/*<h4>{url.status.status}</h4>*/}
+                        <Status status={url.status.status} />
                     </div>
                     <div className="col">
                         <h4>{url.name}</h4>
