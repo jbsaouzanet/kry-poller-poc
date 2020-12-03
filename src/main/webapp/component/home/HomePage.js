@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Status from "../common/Status"
 
 const HomePage = () => {
@@ -32,9 +33,19 @@ const HomePage = () => {
                 "addTime": {"epochSecond":1607021488,"nano":154000000},
                 "status": "OK"
             }
+        },
+        {
+            "name": "Service 2",
+            "status": {
+                "name": "create",
+                "url": "http://localhost:3000/#/create",
+                "addTime": {"epochSecond":1607021488,"nano":154000000},
+                "status": "OK"
+            }
         }
     ]
     return (
+        <>
         <div className="box-content-container">
             {homeData.map((url, index) => (
                 <div className="row" key={index}>
@@ -55,6 +66,16 @@ const HomePage = () => {
             ))
             }
         </div>
+        <div className="box-footer">
+          <Link to="/create">
+              <button className="btn-footer">
+                  <h2>Create a new service</h2>
+              </button>
+          </Link>
+
+        </div>
+    </>
+
     );
 }
 
