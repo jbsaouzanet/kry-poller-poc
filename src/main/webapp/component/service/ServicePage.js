@@ -46,7 +46,7 @@ const ServicePage = () => {
         if (isValid) {
             try {
                 const returnPost = await UsePostService(service);
-                console.log(returnPost);
+                //console.log(returnPost);
                 if(returnPost.status !== 400) {
                     setStatus(STATUS.COMPLETED);
                 } else {
@@ -59,7 +59,7 @@ const ServicePage = () => {
                 console.log("error logged");
             }
         } else {
-            console.log("SUBMITTED");
+           // console.log("SUBMITTED");
             setStatus(STATUS.SUBMITTED);
         }
     }

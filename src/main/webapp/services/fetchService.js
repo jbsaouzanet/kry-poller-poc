@@ -17,7 +17,7 @@ export default function useFetchService(mock) {
                     } else {
                         let json = await response.json();
                         json.map((response) => {
-                            console.log(response);
+                            //console.log(response);
                             response.status = JSON.parse(response.status);
                             return response;
                         });

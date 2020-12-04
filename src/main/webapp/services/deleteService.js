@@ -4,11 +4,11 @@ export async function UseDeleteService(service) {
     return fetch(baseUrl, {
         method: "DELETE",
         headers: {
+            'Accept': 'application/json, text/plain, */*',
             "Content-Type": "application/json",
         },
         body: JSON.stringify({"name":service.name}),
-        mode: 'no-cors'
-    }).then(res => res.text()) // or res.json()
+    }).then(res => res.text())
         .then(res => console.log(res));
 
 }

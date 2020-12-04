@@ -14,7 +14,7 @@ const HomePage = () => {
         event.preventDefault();
         try {
             await UseDeleteService({"name":event.target.alt});
-            console.log(event);
+            //console.log(event);
         } catch (e) {
             console.log("error logged", e);
         }
