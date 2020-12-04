@@ -1,66 +1,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Status from "../common/Status"
+import Spinner from "../common/Spinner";
+import useFetchService from "../../services/fetchService";
+import visitLogo from "./visit.png";
+import deleteLogo from "./delete.png";
+import { UseDeleteService } from "../../services/deleteService";
 
 const HomePage = () => {
-    const homeData = [
-        {
-            "name": "Service 1",
-            "status": {
-                "name": "Google",
-                "url": "http://google.Fr",
-                "addTime": {
-                    "epochSecond": 1607021488,
-                    "nano": 4000000
-                },
-                "status": "FAIL"
-            }
-        },
-        {
-            "name": "Service 2",
-            "status": {
-                "name": "test",
-                "url": "http://localhost:3000/#/test",
-                "addTime": {"epochSecond":1607021488,"nano":154000000},
-                "status": "UNKNOWN"
-            }
-        },
-        {
-            "name": "Service 2",
-            "status": {
-                "name": "create",
-                "url": "http://localhost:3000/#/create",
-                "addTime": {"epochSecond":1607021488,"nano":154000000},
-                "status": "OK"
-            }
-        },
-        {
-            "name": "Service 2",
-            "status": {
-                "name": "create",
-                "url": "http://localhost:3000/#/create",
-                "addTime": {"epochSecond":1607021488,"nano":154000000},
-                "status": "OK"
-            }
+    const { data: homeData, loading } = useFetchService(false);
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        try {
+            await UseDeleteService({"name":event.target.alt});
+            //console.log(event);
+        } catch (e) {
+            console.log("error logged", e);
         }
-    ]
+    }
+
+    if (loading) return <Spinner />;
+    if (homeData === null) return <h1>Please reload</h1>;
     return (
+
         <>
         <div className="box-content-container">
             {homeData.map((url, index) => (
                 <div className="row" key={index}>
-                    <div className="col">
-                        {/*<h4>{url.status.status}</h4>*/}
+                    <div className="col" style={{width:10+"%"}}>
                         <Status status={url.status.status} />
                     </div>
-                    <div className="col">
-                        <h4>{url.name}</h4>
+                    <div className="col" style={{width:70+"%"}}>
+                        <h3>{url.name}</h3>
                     </div>
-                    <div className="col">
-                        <a href={url.status.url}>TEST</a>
+                    <div className="col" style={{width:10+"%"}}>
+                        <a href={url.status.url} rel="noreferrer" target="_blank"> <img src={visitLogo} alt="Visit" className="status-logo" /></a>
                     </div>
-                    <div className="col">
-                        <h4>supprimer</h4>
+                    <div className="col" style={{width:10+"%"}}>
+                        <img src={deleteLogo} alt={url.name} onClick={handleSubmit} className="status-logo"/>
                     </div>
                 </div>
             ))

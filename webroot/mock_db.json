@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Service 1",
+    "status": {
+      "name": "Google",
+      "url": "http://google.Fr",
+      "addTime": {
+        "epochSecond": 1607021488,
+        "nano": 4000000
+      },
+      "status": "FAIL"
+    }
+  },
+  {
+    "name": "Service 2",
+    "status": {
+      "name": "test",
+      "url": "http://localhost:3000/#/test",
+      "addTime": {"epochSecond":1607021488,"nano":154000000},
+      "status": "UNKNOWN"
+    }
+  },
+  {
+    "name": "Service 2",
+    "status": {
+      "name": "create",
+      "url": "http://localhost:3000/#/create",
+      "addTime": {"epochSecond":1607021488,"nano":154000000},
+      "status": "OK"
+    }
+  },
+  {
+    "name": "Service 2",
+    "status": {
+      "name": "create",
+      "url": "http://localhost:3000/#/create",
+      "addTime": {"epochSecond":1607021488,"nano":154000000},
+      "status": "OK"
+    }
+  }
+]

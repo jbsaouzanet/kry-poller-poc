@@ -1,20 +1,21 @@
 import React from "react";
+import okLogo from "./OK.png";
+import unknownLogo from "./UNKNOWN.png";
+import failLogo from "./FAIL.png";
 
 const Status = ({ status }) => {
-    let colorCode = "red";
+    let logo = failLogo;
     if(status === "OK") {
-        colorCode = "green";
-    } else if (status === "UNKNOWNstrokeWidth") {
-        colorCode = "orange";
+        logo = okLogo;
+    } else if (status === "UNKNOWN") {
+        logo = unknownLogo;
     } else {
-        colorCode = "red";
+        logo = failLogo;
     }
 
    return(
-       <svg height="100" width="100">
-        <circle cx="50" cy="50" r="40" stroke="" strokeWidth="3" fill={colorCode} />
-        Sorry, your browser does not support inline SVG.
-       </svg> );
+       <img src={logo} alt="status" className="status-logo"/>
+        );
 
 };
 export default Status;
