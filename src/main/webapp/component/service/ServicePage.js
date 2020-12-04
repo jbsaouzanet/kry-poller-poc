@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {Link} from "react-router-dom";
-
+import { UsePostService } from "../../services/postService";
 const emptyService = {
     name: "",
     url: "",
@@ -16,6 +16,7 @@ const ServicePage = () => {
     const [service, setService] = useState(emptyService);
     const [status, setStatus] = useState(STATUS.IDLE);
     const [touched, setTouched] = useState({});
+
     const [saveError, setSaveError] = useState(null);
 
     // Derived state
@@ -44,14 +45,21 @@ const ServicePage = () => {
         setStatus(STATUS.SUBMITTING);
         if (isValid) {
             try {
-                //await saveShippingAddress(address);
-                //emptyCart();
-                setStatus(STATUS.COMPLETED);
+                const returnPost = await UsePostService(service);
+                console.log(returnPost);
+                if(returnPost.status !== 400) {
+                    setStatus(STATUS.COMPLETED);
+                } else {
+                    setSaveError("error");
+                    console.log("error logged");
+                }
+
             } catch (e) {
                 setSaveError(e);
                 console.log("error logged");
             }
         } else {
+            console.log("SUBMITTED");
             setStatus(STATUS.SUBMITTED);
         }
     }
@@ -64,7 +72,14 @@ const ServicePage = () => {
         return result;
     }
 
-    if (saveError) throw saveError;
+    if (saveError) return (
+        <>
+            <h1>Whoops! <br />We could not create your service. <br/> Please try again</h1>
+            <Link to="/"><button className="btn-footer">
+                <h2>Retry</h2>
+            </button>
+            </Link>
+        </>);
     if (status === STATUS.COMPLETED) {
         return (
             <>
@@ -80,7 +95,9 @@ const ServicePage = () => {
         <div>
             {!isValid && status === STATUS.SUBMITTED && (
                 <div role="alert">
-                    <p><h4>Please fix the following errors:</h4></p>
+                    <p role="alert">
+                       Please fix the following errors:
+                    </p>
                     <ul>
                         {Object.keys(errors).map((key) => {
                             return <li key={key}><h4>{errors[key]}</h4></li>;
@@ -101,7 +118,7 @@ const ServicePage = () => {
                         onChange={handleChange}
                     />
                     <p role="alert">
-                      <h4>  {(touched.name || status === STATUS.SUBMITTED) && errors.name} </h4>
+                       {(touched.name || status === STATUS.SUBMITTED) && errors.name}
                     </p>
                 </div>
 
@@ -117,7 +134,7 @@ const ServicePage = () => {
                     />
 
                     <p role="alert">
-                        <h4>  {(touched.url || status === STATUS.SUBMITTED) && errors.url}</h4>
+                       {(touched.url || status === STATUS.SUBMITTED) && errors.url}
                     </p>
                 </div>
 

@@ -3,9 +3,7 @@ body {
     text-align: center;
 }
 
-p[role="alert"] {
-    color: red;
-}
+
 ul {
     list-style: none;
     padding: 0;
@@ -13,8 +11,40 @@ ul {
 }
 
 div[role="alert"] {
-    color: red;
+    color: #9B1D20;
     text-align: center;
+    font-weight: bold;
+}
+
+
+.lds-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #cef;
+    border-color: #cef transparent #cef transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @media screen and (min-device-width: 768px) {
@@ -75,10 +105,19 @@ div[role="alert"] {
         height: 50px;
         width: 80%;
     }
+    p[role="alert"] {
+        color: #9B1D20;
+        font-size: 1.33em;
+        font-weight: bold;
+    }
 
     input {
         width: 80%;
         height: 20px;
+    }
+    .status-logo {
+        width: 24px;
+        height: 24px;
     }
 }
 @media screen and (max-device-width: 767px) {
@@ -138,17 +177,26 @@ div[role="alert"] {
     h4{
         font-size: 3em
     }
+    p[role="alert"] {
+        color: #9B1D20;
+        font-size: 3em;
+    }
     .btn-footer {
         border-radius: 10px!important;
         border: 0px;
         color: #fff;
         background-color: #6accba;
-        height: 50px;
+        height: 105px;
         width: 80%;
+        font-size: 25px;
     }
     input {
         width: 80%;
         height: 60px;
         font-size: 30px;
+    }
+    .status-logo {
+        width: 64px;
+        height: 64px;
     }
 }

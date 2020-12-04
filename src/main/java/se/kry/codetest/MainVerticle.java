@@ -99,6 +99,7 @@ public class MainVerticle extends AbstractVerticle {
         System.out.println("GET result" + jsonServices.size());
         routingContext.response()
                 .putHeader("content-type", "application/json")
+                .putHeader("Access-Control-Allow-Origin", "*")
                 .end(new JsonArray(jsonServices).encode());
       }
     });
@@ -142,6 +143,7 @@ public class MainVerticle extends AbstractVerticle {
     }
   }
 
+
   /**
    * Responds with a 204 if the result is successful.
    */
@@ -149,11 +151,13 @@ public class MainVerticle extends AbstractVerticle {
     if (res.succeeded()) {
       routingContext.response()
               .putHeader("content-type", "application/json")
+              .putHeader("Access-Control-Allow-Origin", "*")
               .setStatusCode(204)
               .end();
     } else {
       routingContext.response()
               .putHeader("content-type", "application/json")
+              .putHeader("Access-Control-Allow-Origin", "*")
               .setStatusCode(500)
               .setStatusMessage(res.cause().toString())
               .end();
